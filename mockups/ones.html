@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../app/theme.css">
+<style>
+body{ margin:0; background:#d9dbe0; font-family:Inter, sans-serif; }
+.grid{ display:grid; grid-template-columns:repeat(2,800px); gap:20px; padding:20px; }
+.f{ width:800px; height:500px; background:#0b1220; border-radius:12px; position:relative; display:flex; align-items:center; gap:40px; padding:0 60px; box-sizing:border-box; overflow:hidden; }
+.lab{ position:absolute; left:20px; top:16px; font-size:22px; font-weight:700; color:#ffd27a; }
+.w{ display:flex; flex-direction:column; } .w span{ font-size:62px; font-weight:700; letter-spacing:-.03em; line-height:.95; color:#fff; } .w span+span{ color:#60a5fa; }
+.w .r{ margin-top:22px; font-size:16px; letter-spacing:.28em; color:#ffd27a; text-transform:uppercase; }
+/* A: the real typeface 1 */
+.a{ font-size:400px; font-weight:700; color:#2563eb; line-height:.8; letter-spacing:-.04em; }
+/* B: a 1 inside a chat bubble */
+.b{ width:250px; height:250px; background:#2b7bf6; border-radius:70px 70px 70px 18px; display:grid; place-items:center; font-size:200px; font-weight:700; color:#fff; position:relative; }
+.b:after{ content:""; position:absolute; left:-10px; bottom:-2px; width:46px; height:40px; background:#2b7bf6; clip-path:polygon(100% 0, 100% 100%, 0 100%); }
+/* C: an unread-message badge */
+.c{ width:290px; height:290px; border-radius:50%; background:#ff3b30; display:grid; place-items:center; font-size:210px; font-weight:700; color:#fff; box-shadow:0 0 0 14px #0b1220, 0 0 0 18px rgba(255,59,48,.35); }
+/* D: an outlined 1 with a gradient */
+.d{ font-size:400px; font-weight:700; line-height:.8; letter-spacing:-.04em; background:linear-gradient(180deg,#93c5fd,#2563eb); -webkit-background-clip:text; color:transparent; }
+</style></head><body><div class="grid">
+<div class="f"><div class="lab">A · Typeface 1</div><div class="a">1</div><div class="w"><span>One</span><span>Verse</span><span>Evangelism</span><span class="r">Romans 6:23</span></div></div>
+<div class="f"><div class="lab">B · Chat bubble 1</div><div class="b">1</div><div class="w"><span>One</span><span>Verse</span><span>Evangelism</span><span class="r">Romans 6:23</span></div></div>
+<div class="f"><div class="lab">C · Unread badge 1</div><div class="c">1</div><div class="w"><span>One</span><span>Verse</span><span>Evangelism</span><span class="r">Romans 6:23</span></div></div>
+<div class="f"><div class="lab">D · Glowing gradient 1</div><div class="d">1</div><div class="w"><span>One</span><span>Verse</span><span>Evangelism</span><span class="r">Romans 6:23</span></div></div>
+</div></body></html>

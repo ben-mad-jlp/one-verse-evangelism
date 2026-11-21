@@ -1,0 +1,63 @@
+{
+  "name": "one-verse-evangelism",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One Verse Evangelism — youth lessons on sharing Romans 6:23",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "OVE_DEBUG=1 electron .",
+    "browse": "npx --yes live-server@1.2.2 app --port=5175 --open=/lesson1.html --no-css-inject --quiet",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win zip --x64 -c.win.signAndEditExecutable=false"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "org.jlp.one-verse-evangelism",
+    "productName": "One Verse Evangelism",
+    "files": [
+      "electron/**/*",
+      "app/**/*",
+      "package.json",
+      "!**/*.map"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.education",
+      "identity": null
+    },
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    }
+  },
+  "author": "JLP Engineering"
+}

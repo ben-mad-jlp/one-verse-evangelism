@@ -1,0 +1,13 @@
+
+.collab/
+.DS_Store
+.shots/
+build/icon-1024.png
+build/icon.iconset/
+dist/
+node_modules/
+geo/
+maps.json
+footage/
+app/assets/video/
+.claude/settings.local.json

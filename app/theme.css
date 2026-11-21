@@ -1,0 +1,558 @@
+/* ============================================================
+   One Verse Evangelism — "Text Thread" theme.
+   The conversations teens already have: chat bubbles, a phone,
+   the verse as a pinned message, "But…" as someone typing.
+   Light grey-blue content screens, deep navy title/close screens.
+   Loaded after deck.css; overrides tokens and adds the chat parts.
+   ============================================================ */
+@font-face{ font-family:"Inter"; font-style:normal; font-weight:400 700; font-display:block; src:url("assets/fonts/Inter-normal-400-700.woff2") format("woff2"); }
+
+:root{
+  --paper:#eef1f6; --card:#ffffff; --ink:#111827; --ink-soft:#4b5563; --ink-faint:#9ca3af; --rule:#d7dce5;
+  --navy:#0b1220; --blue:#2563eb; --me:#2b7bf6; --them:#e3e6ec; --sin:#dc2626; --life:#2563eb;
+  --sun:#2563eb; --coral:#2563eb; --pine:#2563eb; --sky:#dbe5f7;
+  --display:"Inter", "Helvetica Neue", Arial, sans-serif; --sans:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --card-line:0 solid transparent;
+}
+body{ background:var(--paper); color:var(--ink); }
+.screen{ background:var(--paper); }
+
+/* type: modern, tight, sentence case */
+h1.display, h1.ask{ font-family:var(--display); text-transform:none; font-weight:700; letter-spacing:-.025em; color:var(--ink); }
+h1.display{ font-size:96px; line-height:1.02; }
+h1.display.long{ font-size:64px; line-height:1.08; max-width:24ch; }
+h1.ask{ font-size:72px; line-height:1.1; max-width:20ch; }
+.kicker{ background:none; color:var(--blue); padding:0; font-size:18px; letter-spacing:.24em; font-weight:700; }
+.kicker + h1{ margin-top:22px; }
+.sub{ color:var(--ink-soft); font-size:28px; line-height:1.45; }
+
+/* navy title / bridge / close screens */
+.screen.poster{ background:var(--navy); color:#fff; }
+.sun, .perf{ display:none; }
+.poster h1.display{ color:#fff; }
+.poster .kicker{ background:none; color:#60a5fa; }
+.poster .sub{ color:#9ca3af; }
+.screen.title{ align-items:center; text-align:center; padding-left:112px; }
+.screen.title h1{ font-size:120px; line-height:1; }
+.screen.title .byline{ margin-top:34px; color:#9ca3af; font-size:28px; letter-spacing:0; text-transform:none; font-weight:500; }
+.screen.title .kicker{ margin-bottom:0; }
+
+/* ---------- chat parts ---------- */
+.thread{ display:flex; flex-direction:column; gap:14px; width:100%; max-width:1080px; }
+.bubble{ max-width:78%; padding:20px 30px; border-radius:34px; font-size:30px; line-height:1.38; text-align:left; font-weight:500; }
+.bubble.them{ align-self:flex-start; background:var(--them); color:var(--ink); border-bottom-left-radius:10px; }
+.bubble.me{ align-self:flex-end; background:var(--me); color:#fff; border-bottom-right-radius:10px; }
+.bubble b{ font-weight:700; }
+.bubble.me .sin{ color:#ffd0d0; }
+.bubble .blank{ display:inline-block; min-width:110px; border-bottom:3px solid currentColor; }
+.who{ font-size:18px; font-weight:600; color:var(--ink-faint); letter-spacing:.04em; }
+.who.r{ align-self:flex-end; }
+.stamp{ align-self:center; font-size:18px; font-weight:600; color:var(--ink-faint); letter-spacing:.06em; margin:8px 0; }
+.delivered{ align-self:flex-end; font-size:16px; color:var(--ink-faint); font-weight:600; margin-top:-6px; }
+
+/* a phone holding a thread */
+.phone{ width:640px; background:var(--card); border-radius:56px; padding:22px 26px 34px; box-shadow:0 30px 70px rgba(15,23,42,.16);
+  display:flex; flex-direction:column; gap:12px; }
+.phone .bar{ display:flex; flex-direction:column; align-items:center; gap:6px; padding:6px 0 14px; border-bottom:1px solid var(--rule); margin-bottom:6px; }
+.phone .avatar{ width:58px; height:58px; border-radius:50%; background:linear-gradient(135deg,#93c5fd,#2563eb); color:#fff; font-weight:700; font-size:24px; display:grid; place-items:center; }
+.phone .name{ font-size:18px; font-weight:600; color:var(--ink); }
+.phone .bubble{ font-size:24px; padding:15px 22px; border-radius:26px; max-width:84%; }
+.phone .bubble.them{ border-bottom-left-radius:8px; } .phone .bubble.me{ border-bottom-right-radius:8px; }
+.phones{ display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; width:100%; max-width:1380px; margin-top:56px; }
+.phones .phone{ width:auto; padding:18px 20px 26px; border-radius:44px; }
+.phones .bubble{ font-size:22px; }
+.phones .tag{ font-size:15px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); text-align:center; }
+
+/* the verse as a pinned message */
+.pinned{ background:var(--card); border-radius:30px; padding:44px 54px 50px; width:100%; max-width:1240px; text-align:left;
+  box-shadow:0 20px 50px rgba(15,23,42,.10); }
+.pinned .lab{ font-size:18px; font-weight:700; letter-spacing:.14em; color:var(--ink-faint); text-transform:uppercase; display:flex; align-items:center; gap:12px; }
+.pinned .lab svg{ width:22px; height:22px; }
+.pinned .v{ font-size:58px; font-weight:700; line-height:1.22; letter-spacing:-.015em; margin-top:18px; }
+.pinned .v .a{ color:var(--ink); } .pinned .v .b{ color:var(--ink); }
+.pinned.problem .v .a{ color:var(--sin); } .pinned.problem .v .b{ color:var(--ink-faint); }
+.pinned.gift .v .a{ color:var(--ink-faint); } .pinned.gift .v .b{ color:var(--life); }
+.pinned.small{ padding:26px 36px 30px; max-width:1100px; }
+.pinned.small .v{ font-size:34px; margin-top:10px; }
+
+/* typing dots */
+.typing{ display:flex; gap:20px; background:#1f2937; padding:40px 56px; border-radius:70px; }
+.typing i{ width:40px; height:40px; border-radius:50%; background:#9ca3af; display:block; }
+.screen.active .typing i{ animation:typedot 1.2s ease-in-out infinite; }
+.screen.active .typing i:nth-child(2){ animation-delay:.18s; } .screen.active .typing i:nth-child(3){ animation-delay:.36s; }
+@keyframes typedot{ 0%,60%,100%{ transform:translateY(0); opacity:.5; } 30%{ transform:translateY(-14px); opacity:1; } }
+.typing.light{ background:var(--them); } .typing.light i{ background:#8a93a3; }
+
+/* two-up cards */
+.pair{ display:grid; grid-template-columns:1fr 1fr; gap:32px; width:100%; max-width:1180px; margin-top:56px; }
+.pair .card2{ background:var(--card); border-radius:30px; padding:36px 40px; text-align:left; box-shadow:0 14px 36px rgba(15,23,42,.08); }
+.pair .card2 .tag{ font-size:16px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--sin); }
+.pair .card2 p{ font-size:34px; font-weight:700; line-height:1.2; margin-top:12px; letter-spacing:-.01em; }
+
+/* side-by-side: explanation and a phone */
+.split2{ display:grid; grid-template-columns:1fr 640px; gap:70px; align-items:center; width:100%; max-width:1340px; text-align:left; }
+.split2 .explain{ display:flex; flex-direction:column; gap:26px; }
+.split2 .explain p{ font-size:30px; line-height:1.4; color:var(--ink); }
+.split2 .explain p b{ color:var(--blue); }
+.split2 h1{ text-align:left; }
+
+/* the full presentation, labelled down the side */
+.walk{ display:grid; grid-template-columns:200px 1fr; gap:14px 28px; width:100%; max-width:1260px; align-items:center; margin-top:40px; }
+.walk .lbl{ font-size:16px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); text-align:right; }
+.walk .lbl.sin{ color:var(--sin); } .walk .lbl.life{ color:var(--life); }
+.walk .bubble{ font-size:24px; padding:14px 24px; max-width:92%; }
+.walk .typing{ padding:16px 26px; gap:10px; border-radius:30px; justify-self:end; }
+.walk .typing i{ width:16px; height:16px; }
+
+/* chrome */
+.arrow, #menu-btn{ background:var(--card); border-color:var(--rule); }
+#dots .dot.on{ background:var(--blue); }
+#menu li .label{ font-family:var(--sans); text-transform:none; font-weight:700; letter-spacing:-.01em; }
+
+/* ---------- the series title: a giant 1 with the verse up its stem, VERSE / EVANGELISM, and a phone ---------- */
+.brandrow{ display:grid; grid-template-columns:auto auto auto; align-items:center; gap:64px; }
+.one{ position:relative; width:250px; height:700px; }
+.one .stem{ position:absolute; right:0; top:0; bottom:0; width:150px; background:var(--blue); border-radius:10px;
+  display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.one .flag{ position:absolute; left:0; top:0; width:200px; height:110px; background:var(--blue);
+  clip-path:polygon(40% 0, 100% 0, 100% 100%, 0 78%); border-radius:6px; }
+.one .vtext{ writing-mode:vertical-rl; transform:rotate(180deg); inline-size:620px; font-size:24px; line-height:1.45; font-weight:600;
+  letter-spacing:.04em; color:#dbe7ff; text-align:center; }
+.words{ display:flex; flex-direction:column; gap:6px; text-align:left; }
+.words span{ font-size:104px; font-weight:700; letter-spacing:-.03em; line-height:.95; color:#fff; }
+.words span + span{ color:#60a5fa; }
+.phone.mini{ width:380px; padding:18px 22px 30px; }
+.phone.mini .bubble{ font-size:26px; max-width:94%; }
+.phone.mini .stamp{ font-size:15px; }
+.one .stem{ gap:6px; }
+.one .vref{ writing-mode:vertical-rl; transform:rotate(180deg); font-size:20px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#ffd27a; }
+
+/* ---------- the series title phone: tall, with a real bezel ---------- */
+.iphone{ position:relative; width:410px; height:830px; background:#f8fafc; border-radius:64px; border:14px solid #1f2937;
+  box-shadow:0 0 0 3px #475569, 0 40px 80px rgba(0,0,0,.45); display:flex; flex-direction:column; overflow:hidden; text-align:left; }
+.iphone .island{ position:absolute; left:50%; top:14px; width:118px; height:34px; margin-left:-59px; background:#0b0f17; border-radius:20px; }
+.iphone .status{ display:flex; justify-content:space-between; align-items:center; padding:20px 30px 0 34px; font-size:17px; font-weight:700; color:var(--ink); height:52px; }
+.iphone .bat{ width:28px; height:13px; border:2px solid var(--ink); border-radius:4px; padding:1px; }
+.iphone .bat i{ display:block; width:70%; height:100%; background:var(--ink); border-radius:1px; }
+.iphone .head{ display:flex; flex-direction:column; align-items:center; gap:6px; padding:12px 0 14px; border-bottom:1px solid var(--rule); background:#f1f4f9; }
+.iphone .avatar{ width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg,#93c5fd,#2563eb); color:#fff; font-weight:700; font-size:24px; display:grid; place-items:center; }
+.iphone .name{ font-size:16px; font-weight:600; color:var(--ink); }
+.iphone .msgs{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; padding:16px 18px 14px; }
+.iphone .bubble{ font-size:21px; padding:14px 20px; border-radius:24px; max-width:88%; line-height:1.35; }
+.iphone .bubble.them{ border-bottom-left-radius:8px; }
+.iphone .bubble.me{ border-bottom-right-radius:8px; }
+.iphone .bubble .ref{ display:block; margin-top:8px; font-size:14px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); }
+.iphone .stamp{ font-size:14px; }
+.iphone .delivered{ font-size:13px; }
+.iphone .input{ margin:0 16px 12px; border:1.5px solid var(--rule); border-radius:22px; padding:9px 12px 9px 18px; display:flex; justify-content:space-between; align-items:center; font-size:17px; color:var(--ink-faint); background:#fff; }
+.iphone .input i{ width:26px; height:26px; border-radius:50%; background:var(--me); }
+.iphone .home{ width:140px; height:5px; border-radius:3px; background:var(--ink); margin:2px auto 10px; }
+.brandrow{ gap:72px; }
+.one{ height:640px; }
+/* One / Verse / Evangelism, then the reference */
+.words span{ color:#fff; }
+.words span:nth-child(3){ color:#60a5fa; }
+.words span.wref{ margin-top:40px; font-size:26px; font-weight:700; letter-spacing:.28em; text-transform:uppercase; line-height:1; color:#ffd27a; }
+
+/* the 1 is gone: the words and the phone share the screen */
+.brandrow{ grid-template-columns:auto auto; gap:120px; }
+.words span{ font-size:136px; }
+.words span.wref{ font-size:30px; margin-top:48px; }
+/* someone is typing back, under the lesson title */
+.iphone .typing{ align-self:flex-start; padding:14px 18px; gap:7px; border-radius:22px 22px 22px 8px; }
+.iphone .typing i{ width:11px; height:11px; }
+.screen.active .iphone .typing i{ animation-name:typedot2; }
+@keyframes typedot2{ 0%,60%,100%{ transform:translateY(0); opacity:.45; } 30%{ transform:translateY(-6px); opacity:1; } }
+
+/* ---------- realistic iPhone, iOS Messages in light mode ---------- */
+.iphone{ width:420px; height:880px; padding:11px; border:0; border-radius:70px; background:#0a0a0a; overflow:visible;
+  box-shadow:0 0 0 3px #c8ccd2, 0 0 0 4.5px #8e949c, 0 0 0 6px #d9dce0, 0 44px 90px rgba(0,0,0,.5); font-family:-apple-system,"SF Pro Text","Inter",system-ui,sans-serif; }
+.iphone::before, .iphone::after{ content:""; position:absolute; width:5px; border-radius:3px; background:linear-gradient(90deg,#9aa0a8,#d9dce0); }
+.iphone::before{ left:-10px; top:170px; height:62px; box-shadow:0 84px 0 #b9bdc3; }
+.iphone::after{ right:-10px; top:220px; height:100px; }
+.iphone .scr{ position:relative; height:100%; border-radius:59px; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
+.iphone .island{ top:12px; width:122px; height:36px; margin-left:-61px; background:#000; border-radius:20px; }
+.iphone .status{ height:54px; padding:18px 30px 0 40px; font-size:17px; font-weight:600; color:#000; letter-spacing:-.01em; }
+.iphone .status .icons{ display:flex; align-items:center; gap:6px; }
+.iphone .status svg{ fill:#000; }
+.iphone .sig{ width:18px; height:12px; } .iphone .wifi{ width:17px; height:12px; }
+.iphone .bat{ position:relative; width:25px; height:12px; border:1.2px solid rgba(0,0,0,.4); border-radius:4px; padding:1.5px; }
+.iphone .bat::after{ content:""; position:absolute; right:-4px; top:3px; width:2px; height:4px; border-radius:0 2px 2px 0; background:rgba(0,0,0,.4); }
+.iphone .bat i{ width:78%; background:#000; border-radius:2px; }
+.iphone .head{ position:relative; gap:3px; padding:4px 0 10px; background:rgba(249,249,249,.94); border-bottom:.5px solid #d1d1d6; }
+.iphone .head .back{ position:absolute; left:16px; top:20px; width:13px; height:22px; color:#007aff; }
+.iphone .avatar{ width:52px; height:52px; font-size:21px; font-weight:600; letter-spacing:.02em; background:linear-gradient(180deg,#a8adb6,#868b94); }
+.iphone .name{ font-size:12.5px; font-weight:400; color:#000; }
+.iphone .name .chev{ color:#a1a1a6; font-size:14px; }
+.iphone .msgs{ gap:3px; padding:12px 16px 10px; background:#fff; }
+.iphone .stamp{ align-self:center; text-align:center; font-size:12px; font-weight:400; letter-spacing:0; color:#8e8e93; margin:0 0 10px; line-height:1.35; }
+.iphone .stamp b{ font-weight:600; }
+.iphone .bubble{ position:relative; font-size:18px; line-height:1.3; padding:9px 15px 10px; border-radius:20px; max-width:78%; box-shadow:none; letter-spacing:-.01em; }
+.iphone .bubble.them{ background:#e9e9eb; color:#000; margin:0 0 8px 6px; }
+.iphone .bubble.me{ background:#0b84fe; color:#fff; align-self:flex-end; margin-right:6px; font-weight:400; }
+.iphone .bubble::before, .iphone .bubble::after{ content:""; position:absolute; bottom:0; height:20px; }
+.iphone .bubble.me::before{ right:-7px; width:20px; background:#0b84fe; border-bottom-left-radius:16px 14px; }
+.iphone .bubble.me::after{ right:-26px; width:26px; background:#fff; border-bottom-left-radius:10px; }
+.iphone .bubble.them::before{ left:-7px; width:20px; background:#e9e9eb; border-bottom-right-radius:16px 14px; }
+.iphone .bubble.them::after{ left:-26px; width:26px; background:#fff; border-bottom-right-radius:10px; }
+.iphone .bubble .ref{ margin-top:5px; font-size:12px; letter-spacing:.12em; color:#6e6e73; }
+.iphone .delivered{ align-self:flex-end; font-size:11.5px; font-weight:600; color:#8e8e93; margin:2px 8px 8px 0; }
+.iphone .typing{ position:relative; align-self:flex-start; margin-left:6px; padding:12px 15px; gap:5px; border-radius:20px; background:#e9e9eb; }
+.iphone .typing::before, .iphone .typing::after{ content:""; position:absolute; border-radius:50%; background:#e9e9eb; }
+.iphone .typing::before{ left:-1px; bottom:-1px; width:12px; height:12px; }
+.iphone .typing::after{ left:-7px; bottom:-7px; width:6px; height:6px; }
+.iphone .typing i{ width:9px; height:9px; background:#8e8e93; }
+.iphone .compose{ display:flex; align-items:center; gap:10px; padding:6px 14px 8px; background:#fff; }
+.iphone .compose .plus{ width:34px; height:34px; flex:none; border-radius:50%; background:#e9e9eb; color:#6e6e73; display:grid; place-items:center; font-size:26px; font-weight:300; line-height:1; padding-bottom:2px; }
+.iphone .compose .field{ flex:1; display:flex; justify-content:space-between; align-items:center; height:36px; padding:0 12px 0 14px; border:1px solid #c7c7cc; border-radius:18px; font-size:16px; color:#b0b0b5; }
+.iphone .compose .mic{ width:12px; height:18px; fill:#a1a1a6; color:#a1a1a6; }
+.iphone .home{ width:138px; height:5px; background:#000; margin:6px auto 9px; }
+
+/* =====================================================================
+   Every screen now matches the title: deep navy stage, real iPhones in
+   light mode, the verse as an iOS notification banner.
+   ===================================================================== */
+body, .screen, .screen.poster{ background:var(--navy); color:#fff; }
+h1.display, h1.ask{ color:#fff; }
+.kicker{ color:#60a5fa; }
+.arrow, #menu-btn{ background:#1a2333; border-color:#2a3446; color:#cbd5e1; }
+#dots .dot{ background:#334155; } #dots .dot.on{ background:#60a5fa; }
+
+/* text on the left, phone on the right */
+.side{ display:grid; grid-template-columns:1fr auto; gap:110px; align-items:center; width:100%; max-width:1380px; text-align:left; }
+.side .explain{ display:flex; flex-direction:column; gap:30px; align-items:flex-start; }
+.side .explain .kicker{ text-align:left; }
+.side .explain h1{ text-align:left; max-width:16ch; }
+.side .explain .kicker + h1{ margin-top:0; }
+.side .explain p{ font-size:32px; line-height:1.42; color:#cbd5e1; }
+.side .explain p b{ color:#fff; font-weight:700; }
+.screen:has(.side){ padding-top:30px; padding-bottom:30px; }
+
+/* content phones: same phone as the title, text a little larger */
+.side .iphone{ height:900px; }
+.side .iphone .bubble{ font-size:21px; }
+.iphone .bubble{ font-family:inherit; font-weight:400; }
+.iphone .bubble b{ font-weight:600; }
+.iphone .bubble.step{ transform:translateY(10px) scale(.97); transform-origin:bottom right; }
+.iphone .bubble.them.step{ transform-origin:bottom left; }
+.iphone .bubble.step.shown{ transform:none; }
+.iphone .bubble + .bubble.me, .iphone .bubble + .bubble.them{ margin-top:0; }
+.iphone .stamp span{ font-weight:400; }
+.iphone .stamp:not(:first-child){ margin-top:10px; }
+.iphone .bubble .blank{ display:inline-block; min-width:70px; border-bottom:2px solid currentColor; }
+.iphone .typing.step{ transform:translateY(8px); } .iphone .typing.step.shown{ transform:none; }
+.iphone .typing{ margin-bottom:10px; }
+
+/* three smaller phones */
+.trio{ display:grid; grid-template-columns:repeat(3, auto); gap:70px; margin-top:34px; }
+.iphone.sm{ width:360px; height:740px; border-radius:62px; }
+.iphone.sm .scr{ border-radius:52px; }
+.iphone.sm .bubble{ font-size:19px; }
+.screen:has(.trio){ padding-top:30px; padding-bottom:40px; }
+
+/* putting it together: a taller thread, smaller type */
+.iphone.walkph .bubble{ font-size:17.5px; max-width:82%; }
+.legend{ list-style:none; display:flex; flex-direction:column; gap:14px; margin-top:6px; counter-reset:w; }
+.legend li{ counter-increment:w; font-size:30px; font-weight:600; color:#e2e8f0; display:flex; align-items:center; gap:18px; }
+.legend li::before{ content:counter(w); width:44px; height:44px; border-radius:50%; background:#0b84fe; color:#fff; font-size:22px; font-weight:700; display:grid; place-items:center; }
+.legend li.sin::before{ background:#ff3b30; } .legend li.sin{ color:#fca5a5; }
+.legend li.life{ color:#93c5fd; }
+
+/* the iOS notification banner */
+.notif{ display:flex; gap:18px; align-items:flex-start; text-align:left; background:rgba(246,246,248,.97); color:#000; border-radius:28px;
+  padding:20px 24px 22px 20px; box-shadow:0 20px 50px rgba(0,0,0,.35); font-family:-apple-system,"SF Pro Text","Inter",system-ui,sans-serif; width:100%; }
+.notif .appicon{ flex:none; width:46px; height:46px; border-radius:11px; background:linear-gradient(180deg,#5df777,#0cbd2a); display:grid; place-items:center; }
+.notif .appicon svg{ width:30px; height:30px; fill:#fff; }
+.notif .nb{ flex:1; min-width:0; }
+.notif .nt{ display:flex; justify-content:space-between; align-items:baseline; font-size:20px; }
+.notif .nt b{ font-weight:600; } .notif .nt span{ color:#8a8a8e; font-size:17px; }
+.notif .v{ font-size:24px; line-height:1.3; margin-top:2px; color:#000; }
+.notif.big{ max-width:1260px; margin-top:34px; border-radius:40px; padding:34px 40px 40px 34px; gap:28px; }
+.notif.big .appicon{ width:72px; height:72px; border-radius:17px; } .notif.big .appicon svg{ width:46px; height:46px; }
+.notif.big .nt{ font-size:28px; } .notif.big .nt span{ font-size:24px; }
+.notif.big .v{ font-size:60px; line-height:1.18; font-weight:600; letter-spacing:-.015em; margin-top:10px; }
+.notif.problem .v .a{ color:#ff3b30; font-weight:600; } .notif.problem .v .b{ color:#a1a1a6; }
+.notif.gift .v .a{ color:#a1a1a6; } .notif.gift .v .b{ color:#007aff; font-weight:600; }
+.notif.big.gift .v .b{ font-weight:700; }
+.notif.sin .nt b{ color:#ff3b30; text-transform:uppercase; letter-spacing:.12em; font-size:17px; }
+.notif.sin .v{ font-size:38px; font-weight:600; letter-spacing:-.01em; margin-top:6px; }
+.pair2{ display:grid; grid-template-columns:1fr 1fr; gap:34px; width:100%; max-width:1180px; margin-top:60px; }
+
+/* big typing bubble on the bridge and close screens: iOS dark gray with its tail */
+.typing.big{ position:relative; background:#26262a; padding:40px 56px; border-radius:70px; margin-top:60px; }
+.typing.big i{ background:#8e8e93; }
+.typing.big::before, .typing.big::after{ content:""; position:absolute; border-radius:50%; background:#26262a; }
+.typing.big::before{ left:-2px; bottom:-4px; width:34px; height:34px; }
+.typing.big::after{ left:-20px; bottom:-20px; width:16px; height:16px; }
+#l2-but .typing.big{ margin-top:0; }
+/* bigger type for the room; tails only on the last bubble of a run, like iOS */
+.side .iphone .bubble{ font-size:24px; max-width:82%; }
+.side .iphone .stamp{ font-size:14px; } .side .iphone .delivered{ font-size:13px; }
+.side .iphone.walkph .bubble{ font-size:19px; max-width:86%; }
+.iphone.sm .bubble{ font-size:20px; max-width:84%; }
+.iphone .bubble.me:has(+ .bubble.me:not(.step)), .iphone .bubble.me:has(+ .bubble.me.shown),
+.iphone .bubble.them:has(+ .bubble.them:not(.step)), .iphone .bubble.them:has(+ .bubble.them.shown){ --notail:1; }
+.iphone .bubble.me:has(+ .bubble.me:not(.step))::before, .iphone .bubble.me:has(+ .bubble.me:not(.step))::after,
+.iphone .bubble.me:has(+ .bubble.me.shown)::before, .iphone .bubble.me:has(+ .bubble.me.shown)::after,
+.iphone .bubble.them:has(+ .bubble.them:not(.step))::before, .iphone .bubble.them:has(+ .bubble.them:not(.step))::after,
+.iphone .bubble.them:has(+ .bubble.them.shown)::before, .iphone .bubble.them:has(+ .bubble.them.shown)::after{ display:none; }
+.iphone .bubble.me + .bubble.them, .iphone .bubble.them + .bubble.me, .iphone .delivered + .bubble{ margin-top:8px; }
+.iphone .bubble.them{ margin-bottom:0; }
+
+/* example transitions: one phone per screen, zoomed in, top cropped off */
+.screen.ex{ overflow:hidden; align-items:flex-start; }
+.ex .extext{ max-width:640px; text-align:left; display:flex; flex-direction:column; gap:28px; }
+.ex .extext .kicker{ text-align:left; } .ex .extext h1{ text-align:left; margin-top:0; }
+.ex .extext p{ font-size:32px; color:#cbd5e1; line-height:1.4; }
+.ex .zoomwrap{ position:absolute; right:130px; bottom:46px; }
+.iphone.zoom{ zoom:1.75; }
+.iphone.zoom .bubble{ font-size:20px; max-width:80%; }
+/* their text arrives: typing dots for a beat, then the bubble pops in */
+.ex .slot{ display:grid; align-self:stretch; }
+.ex .slot > *{ grid-area:1/1; justify-self:start; align-self:end; }
+.screen.active.ex .typing.pre{ animation:preType 1.7s ease both; }
+.screen.active.ex .typing.pre i{ animation:typedot2 1s ease-in-out infinite; }
+.screen.active.ex .bubble.them.in{ transform-origin:bottom left; animation:popIn .5s cubic-bezier(.2,1.5,.4,1) 1.6s both; }
+@keyframes preType{ 0%{ opacity:0; transform:scale(.6); } 15%,85%{ opacity:1; transform:none; } 100%{ opacity:0; transform:scale(.8); } }
+@keyframes popIn{ from{ opacity:0; transform:scale(.4) translateY(20px); } to{ opacity:1; transform:none; } }
+.ex .typing.pre{ transform-origin:bottom left; margin-bottom:0; }
+/* every time they reply on a click: typing dots first, then their bubble */
+.iphone .slot{ display:grid; align-self:stretch; }
+.iphone .slot > *{ grid-area:1/1; justify-self:start; align-self:end; }
+.iphone .slot .typing.pre{ transform-origin:bottom left; margin-bottom:0; opacity:0; }
+.iphone .slot.step{ transform:none; transition:none; }
+.iphone .slot.step .bubble.in{ opacity:0; }
+.iphone .slot.step.shown .typing.pre{ animation:preType 1.7s ease both; }
+.iphone .slot.step.shown .typing.pre i{ animation:typedot2 1s ease-in-out infinite; }
+.iphone .slot.step.shown .bubble.in{ transform-origin:bottom left; animation:popIn .5s cubic-bezier(.2,1.5,.4,1) 1.6s both; }
+.iphone .slot + .slot, .iphone .bubble.me + .slot, .iphone .delivered + .slot{ margin-top:8px; }
+.iphone .slot + .slot{ margin-top:3px; }
+.iphone .slot:has(+ .slot.shown) .bubble::before, .iphone .slot:has(+ .slot.shown) .bubble::after{ display:none; }
+
+/* ---------- us typing: the iMessage field fills, then the message is sent ---------- */
+.iphone .compose{ align-items:flex-end; }
+.iphone .compose .plus{ margin-bottom:1px; }
+.iphone .compose .field{ position:relative; height:auto; min-height:36px; padding:7px 44px 7px 14px; line-height:1.3; }
+.iphone .compose .field .typed{ display:none; color:#000; font-size:17px; text-align:left; word-break:break-word; }
+.iphone .compose .field .send{ display:none; position:absolute; right:4px; bottom:4px; width:28px; height:28px; fill:#0b84fe; transition:transform .12s; }
+.iphone .compose .field.busy > span:first-child{ display:none; }
+.iphone .compose .field.busy .mic{ display:none; }
+.iphone .compose .field.busy .typed{ display:block; }
+.iphone .compose .field.busy .send{ display:block; }
+.iphone .compose .field.tap .send{ transform:scale(.8); }
+.iphone .compose .field .mic{ position:absolute; right:12px; bottom:9px; }
+.side .iphone .compose .field .typed{ font-size:19px; }
+.iphone.zoom .compose .field .typed{ font-size:17px; }
+.iphone .caret{ display:inline-block; width:2px; height:1.15em; margin-left:1px; vertical-align:-.2em; background:#0b84fe; animation:caret 1s steps(1) infinite; }
+@keyframes caret{ 50%{ opacity:0; } }
+.iphone .ac{ border-radius:4px; }
+.iphone .ac:not(.fixed){ background:rgba(11,132,254,.18); box-shadow:inset 0 -2px 0 #0b84fe; }
+.iphone .ac.fixed{ animation:acflash .6s ease both; }
+@keyframes acflash{ from{ background:rgba(11,132,254,.3); } to{ background:transparent; } }
+.iphone .bubble.me.pending{ opacity:0 !important; }
+.iphone .bubble.me.sent{ animation:sendUp .45s cubic-bezier(.2,.9,.3,1.1) both; transform-origin:bottom right; }
+@keyframes sendUp{ from{ opacity:0; transform:translateY(60px) scale(.92); } to{ opacity:1; transform:none; } }
+
+/* ---------- the typing indicator, like iOS: dots fade dark-to-light in a wave, bubble breathes ---------- */
+.typing i{ transform:none !important; }
+.screen.active .typing i, .screen.active.ex .typing.pre i, .iphone .slot.step.shown .typing.pre i, .screen.active .iphone .typing i{
+  animation-name:iosdot !important; animation-duration:1.35s !important; animation-timing-function:ease-in-out !important; animation-iteration-count:infinite !important; }
+.screen.active .typing i:nth-child(1){ animation-delay:0s !important; }
+.screen.active .typing i:nth-child(2){ animation-delay:.22s !important; }
+.screen.active .typing i:nth-child(3){ animation-delay:.44s !important; }
+@keyframes iosdot{ 0%,60%,100%{ opacity:.35; } 25%{ opacity:1; } }
+.iphone .typing i, .typing.light i{ background:#7c7c80; }
+.typing.big i{ background:#a1a1a6; }
+.screen.active .iphone .typing:not(.pre), .screen.active .typing.big{ animation:breathe 1.35s ease-in-out infinite; transform-origin:bottom left; }
+@keyframes breathe{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.04); } }
+.iphone .bubble.me.pending + .delivered{ opacity:0 !important; }
+
+/* title screen: phone zoomed to fill the right half, top cropped off */
+.screen.brand{ overflow:hidden; }
+.screen.brand .brandrow{ display:block; width:100%; }
+.screen.brand .words{ max-width:760px; }
+.screen.brand .iphone{ position:absolute; right:70px; bottom:22px; zoom:1.78; }
+.screen.brand .iphone .bubble{ font-size:19px; }
+.screen.brand .words span:not(.wref){ font-size:110px; } .screen.brand{ padding-left:90px; }
+.basics{ list-style:none; display:flex; flex-direction:column; gap:30px; margin-top:6px; }
+.basics li{ font-size:46px; line-height:1.15; font-weight:500; color:#cbd5e1; letter-spacing:-.015em; }
+.basics li b{ color:#fff; font-weight:700; }
+#l1-why .extext{ max-width:600px; } .basics li{ font-size:44px; }
+#l1-why .extext{ max-width:540px; }
+
+/* section headers: a real header, not small spaced caps (every screen) */
+.kicker, .poster .kicker, .side .explain .kicker, .ex .extext .kicker{ font-size:46px; font-weight:700; letter-spacing:-.015em; text-transform:none;
+  color:#60a5fa; line-height:1.1; display:flex; align-items:center; gap:18px; }
+.kicker::before{ content:""; width:10px; height:44px; border-radius:5px; background:#0b84fe; flex:none; }
+.screen:not(.ex):not(:has(.side)) .kicker{ justify-content:center; }
+.kicker + h1, .side .explain .kicker + h1{ margin-top:18px; }
+.ex .extext{ max-width:580px; } .ex .extext .kicker{ align-items:flex-start; } .ex .extext .kicker::before{ height:100px; }
+.ex .extext .kicker::before{ height:auto; align-self:stretch; }
+/* every phone screen now uses the zoomed phone */
+.ex .extext .notif{ width:100%; }
+.ex .extext .legend li{ font-size:34px; }
+.iphone.zoom.walkph .bubble{ font-size:17px; }
+
+/* ---------- real iOS message notification ---------- */
+.notif{ background:rgba(242,242,247,.86); backdrop-filter:blur(30px) saturate(1.6); -webkit-backdrop-filter:blur(30px) saturate(1.6);
+  border-radius:26px; padding:16px 20px 18px 16px; gap:14px; box-shadow:0 8px 30px rgba(0,0,0,.28); align-items:flex-start; }
+.notif .nav{ position:relative; flex:none; width:52px; height:52px; margin-top:2px; }
+.notif .nav .av{ width:52px; height:52px; border-radius:50%; background:linear-gradient(180deg,#a8adb6,#868b94); color:#fff; font-size:20px; font-weight:600;
+  display:grid; place-items:center; letter-spacing:.02em; }
+.notif .nav .appicon{ position:absolute; right:-5px; bottom:-5px; width:24px; height:24px; border-radius:6px; box-shadow:0 0 0 2.5px rgba(242,242,247,1); }
+.notif .nav .appicon svg{ width:16px; height:16px; }
+.notif .nt{ font-size:21px; } .notif .nt b{ font-weight:600; color:#000; } .notif .nt span{ font-size:17px; color:rgba(60,60,67,.6); }
+.notif .v{ font-size:21px; line-height:1.3; font-weight:400; color:#000; margin-top:1px; }
+.notif .nref{ color:rgba(60,60,67,.6); font-weight:400; white-space:nowrap; }
+/* big verse banners */
+.notif.big{ border-radius:44px; padding:30px 38px 36px 30px; gap:26px; }
+.notif.big .nav, .notif.big .nav .av{ width:88px; height:88px; } .notif.big .nav .av{ font-size:34px; }
+.notif.big .nav .appicon{ width:38px; height:38px; border-radius:10px; right:-6px; bottom:-6px; box-shadow:0 0 0 4px rgba(242,242,247,1); }
+.notif.big .nav .appicon svg{ width:26px; height:26px; }
+.notif.big .nt{ font-size:32px; } .notif.big .nt span{ font-size:26px; }
+.notif.big .v{ font-size:54px; line-height:1.2; font-weight:500; margin-top:6px; }
+.notif.big .nref{ font-size:30px; font-weight:500; }
+/* smaller banner on the left of problem / answer screens: still readable */
+.ex .extext .notif .v{ font-size:27px; } .ex .extext .notif .nt{ font-size:24px; }
+/* the result-of-sin pair */
+.notif.sin .nt b{ color:#000; text-transform:none; letter-spacing:0; font-size:24px; }
+.notif.sin .v{ font-size:36px; font-weight:500; }
+.notif{ background:rgba(248,248,250,.94); }
+.notif .nav .appicon{ width:20px; height:20px; border-radius:5px; right:-7px; bottom:-7px; }
+.notif .nav .appicon svg{ width:13px; height:13px; }
+.notif.big .nav .appicon{ width:32px; height:32px; border-radius:8px; right:-10px; bottom:-10px; }
+.notif.big .nav .appicon svg{ width:21px; height:21px; }
+
+/* a timestamp only appears together with the first message under it */
+.iphone .stamp{ transition:opacity .3s ease; }
+.iphone .stamp:has(+ .step:not(.shown)), .iphone .stamp:has(+ .bubble.pending){ opacity:0; }
+.screen.active .iphone .stamp:has(+ .slot:not(.step)){ animation:stampIn .3s ease 1.6s both; }
+@keyframes stampIn{ from{ opacity:0; } to{ opacity:1; } }
+
+/* notification, take 3: the Messages app icon on the left, like the real banner */
+.notif{ background:#f4f4f6; border:1px solid rgba(0,0,0,.06); border-radius:34px; padding:18px 26px 20px 18px; gap:18px; align-items:center; }
+.notif .appicon{ flex:none; width:60px; height:60px; border-radius:14px; background:linear-gradient(180deg,#65f683 0%,#2ad34a 55%,#14c13a 100%);
+  display:grid; place-items:center; box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08); }
+.notif .appicon svg{ width:60px; height:60px; filter:drop-shadow(0 1px 1px rgba(0,0,0,.08)); }
+.notif .nt b{ font-weight:600; }
+.notif .nt span{ color:#6e6e73; }
+.notif.big{ border-radius:56px; padding:30px 44px 34px 30px; gap:30px; }
+.notif.big .appicon{ width:100px; height:100px; border-radius:24px; } .notif.big .appicon svg{ width:100px; height:100px; }
+.ex .extext .notif .appicon{ width:52px; height:52px; border-radius:12px; } .ex .extext .notif .appicon svg{ width:52px; height:52px; }
+.notif.sin .appicon{ width:52px; height:52px; border-radius:12px; } .notif.sin .appicon svg{ width:52px; height:52px; }
+.iphone .msgs{ min-height:0; overflow:hidden; }
+
+/* threads behave like a real phone: unsent messages take no space, new ones push the thread up */
+.iphone .msgs > .step:not(.shown){ display:none; }
+.iphone .msgs > .bubble.me.pending{ display:none; }
+.iphone .stamp:has(+ .step:not(.shown)), .iphone .stamp:has(+ .bubble.pending){ display:none; }
+.iphone .bubble.me.pending + .delivered{ display:none; }
+.iphone .stamp:has(+ .slot.step.shown){ animation:stampIn .3s ease 1.6s both; }
+.sinred{ color:#ff453a; }
+.giftgreen{ color:#30d158; }
+
+/* typing dots sit right under the last message; the reply takes no room until it arrives */
+.iphone .slot{ display:flex; flex-direction:column; align-items:flex-start; }
+.iphone .slot > *{ grid-area:auto; align-self:flex-start; }
+.screen.active.ex .typing.pre, .iphone .slot.step.shown .typing.pre{ animation:preType2 1.65s ease both; }
+.screen.active.ex .bubble.them.in, .iphone .slot.step.shown .bubble.in{ animation:popIn2 .5s cubic-bezier(.2,1.3,.4,1) 1.6s both; }
+@keyframes preType2{ 0%{ opacity:0; transform:scale(.6); max-height:80px; } 12%,88%{ opacity:1; transform:none; max-height:80px; }
+  97%{ opacity:0; max-height:80px; } 100%{ opacity:0; max-height:0; padding-top:0; padding-bottom:0; margin:0; } }
+@keyframes popIn2{ from{ opacity:0; transform:scale(.5); max-height:0; padding-top:0; padding-bottom:0; } 30%{ max-height:400px; padding-top:9px; padding-bottom:10px; }
+  to{ opacity:1; transform:none; max-height:400px; padding-top:9px; padding-bottom:10px; } }
+/* entry-time animation only for replies that aren't on a click */
+.screen.active.ex .slot.step:not(.shown) .typing.pre, .screen.active.ex .slot.step:not(.shown) .bubble.them.in{ animation:none; }
+.iphone .stamp:has(+ .slot.step.shown){ animation:stampIn2 .35s ease 1.6s both; }
+@keyframes stampIn2{ from{ opacity:0; max-height:0; margin-top:0; margin-bottom:0; } to{ opacity:1; max-height:60px; } }
+.iphone .msgs > *, .iphone .slot > *{ flex-shrink:0; }
+/* collapse with position (discrete) instead of animating padding */
+.iphone .slot{ position:relative; }
+.screen.active.ex .typing.pre, .iphone .slot.step.shown .typing.pre{ animation-name:preType3; }
+.screen.active.ex .bubble.them.in, .iphone .slot.step.shown .bubble.in{ animation-name:popIn3; }
+@keyframes preType3{ 0%{ opacity:0; transform:scale(.6); } 12%,88%{ opacity:1; transform:none; } 98%{ opacity:0; position:static; } 99%,100%{ opacity:0; position:absolute; } }
+@keyframes popIn3{ 0%{ opacity:0; transform:scale(.5); position:absolute; } 1%{ opacity:0; transform:scale(.5); position:static; } 100%{ opacity:1; transform:none; position:static; } }
+.screen.active.ex .slot.step:not(.shown) .typing.pre, .screen.active.ex .slot.step:not(.shown) .bubble.them.in{ animation:none; }
+/* putting it together: each bullet lights up with its text */
+#l2-together .legend li{ opacity:.28; transition:opacity .4s ease; }
+#l2-together:has(.msgs [data-part="1"].shown) .legend li[data-part="1"],
+#l2-together:has(.msgs [data-part="2"].shown) .legend li[data-part="2"],
+#l2-together:has(.msgs [data-part="3"].shown) .legend li[data-part="3"],
+#l2-together:has(.msgs [data-part="4"].shown) .legend li[data-part="4"],
+#l2-together:has(.msgs [data-part="5"].shown) .legend li[data-part="5"]{ opacity:1; }
+#l2-together .delivered{ display:none; } #l2-together .bubble.me.shown:not(.pending) + .delivered{ display:block; }
+/* their automatic reply right after our text sends */
+.iphone .slot.auto{ display:none; margin-top:8px; }
+.iphone .bubble.me.shown:not(.pending) + .slot.auto{ display:flex; }
+.iphone .bubble.me.shown:not(.pending) + .slot.auto .typing.pre{ animation:preType3 1.65s ease .5s both; }
+.iphone .bubble.me.shown:not(.pending) + .slot.auto .typing.pre i{ animation-name:iosdot !important; animation-duration:1.35s !important; animation-iteration-count:infinite !important; }
+.iphone .bubble.me.shown:not(.pending) + .slot.auto .bubble.in{ animation:popIn3 .5s cubic-bezier(.2,1.3,.4,1) 2.1s both; }
+/* bullets appear only when their text does; solution is green */
+#l2-together .legend li{ opacity:0; transform:translateX(-12px); transition:opacity .4s ease, transform .4s ease; }
+#l2-together:has(.msgs [data-part="1"].shown) .legend li[data-part="1"],
+#l2-together:has(.msgs [data-part="2"].shown) .legend li[data-part="2"],
+#l2-together:has(.msgs [data-part="3"].shown) .legend li[data-part="3"],
+#l2-together:has(.msgs [data-part="4"].shown) .legend li[data-part="4"],
+#l2-together:has(.msgs [data-part="5"].shown) .legend li[data-part="5"]{ opacity:1; transform:none; }
+.legend li.life{ color:#30d158; } .legend li.life::before{ background:#30d158; }
+/* let's pray */
+.screen.pray h1.display{ font-size:140px; }
+.screen.pray .sub{ color:#cbd5e1; font-size:44px; line-height:1.35; max-width:30ch; margin-top:56px; font-weight:500; }
+.screen.pray .sub b{ color:#60a5fa; font-weight:700; }
+
+/* "done": a message that has already arrived shows instantly (quick clicks, jumps, stepping back) */
+.iphone .msgs > .done .typing.pre{ display:none !important; }
+.iphone .msgs > .done .bubble.in, .iphone .msgs > .bubble.done{ animation:none !important; opacity:1 !important; transform:none !important; position:static !important; }
+.iphone .msgs > .stamp.done{ animation:none !important; opacity:1 !important; }
+/* result of sin: words left, notifications stacked right */
+.cols2{ display:grid; grid-template-columns:1fr 600px; gap:90px; align-items:center; width:100%; max-width:1380px; text-align:left; }
+.cols2 .coltext .kicker{ justify-content:flex-start !important; }
+.cols2 h1.display{ text-align:left; font-size:92px; }
+.cols2 .pair2{ grid-template-columns:1fr; gap:28px; margin-top:0; max-width:none; }
+.cols2 .notif.sin .v{ font-size:44px; }
+/* key takeaway as three notification boxes */
+.trio3{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; width:100%; max-width:1380px; margin-top:60px; }
+.trio3 .notif{ flex-direction:column; align-items:flex-start; gap:18px; padding:28px 30px 34px; border-radius:36px; }
+.trio3 .notif .nb{ width:100%; }
+.trio3 .notif .nt{ font-size:26px; } .trio3 .notif .nt b{ color:#000; }
+.trio3 .notif .v{ font-size:38px; line-height:1.22; font-weight:500; margin-top:8px; }
+.trio3 .notif .v b{ color:#007aff; font-weight:700; }
+/* tails are positioned off their bubble, so bubbles must stay position:relative (never static) */
+@keyframes preType3{ 0%{ opacity:0; transform:scale(.6); position:relative; } 12%,88%{ opacity:1; transform:none; position:relative; } 98%{ opacity:0; position:relative; } 99%,100%{ opacity:0; position:absolute; } }
+@keyframes popIn3{ 0%{ opacity:0; transform:scale(.5); position:absolute; } 1%{ opacity:0; transform:scale(.5); position:relative; } 100%{ opacity:1; transform:none; position:relative; } }
+.iphone .msgs > .done .bubble.in, .iphone .msgs > .bubble.done{ position:relative !important; }
+/* key takeaway: plain boxes */
+.tbox{ background:#162033; border:1.5px solid #26324a; border-radius:32px; padding:38px 36px 42px; text-align:left; }
+.tbox .tnum{ width:56px; height:56px; border-radius:50%; background:#0b84fe; color:#fff; font-size:28px; font-weight:700; display:grid; place-items:center; }
+.tbox .ttl{ margin-top:22px; font-size:44px; font-weight:700; color:#fff; letter-spacing:-.015em; }
+.tbox p{ margin-top:12px; font-size:32px; line-height:1.3; color:#cbd5e1; }
+.tbox p b{ color:#60a5fa; font-weight:700; }
+
+/* the last bubble keeps its tail until the next message actually lands */
+.iphone .bubble.me:has(+ .bubble.me.shown.pending)::before,
+.iphone .bubble.me:has(+ .bubble.me.shown.pending)::after{ display:block; }
+.iphone .slot:has(+ .slot.shown) .bubble::before, .iphone .slot:has(+ .slot.shown) .bubble::after{ display:block; animation:tailOff 0s linear 1.6s forwards; }
+.iphone .slot:has(+ .slot.shown.done) .bubble::before, .iphone .slot:has(+ .slot.shown.done) .bubble::after{ display:none; }
+@keyframes tailOff{ to{ opacity:0; } }
+
+/* ---------- menu: dark, readable, no key legend ---------- */
+#menu{ background:rgba(11,18,32,.97); }
+#menu h2{ color:#7c8aa5; }
+#menu li .label{ color:#e2e8f0; }
+#menu li::before{ color:#7c8aa5; }
+#menu li:hover{ background:#1a2333; }
+#menu li.on .label{ color:#60a5fa; } #menu li.on::before{ color:#60a5fa; }
+.menu-sessions{ border-bottom-color:#2a3446; }
+.menu-sessions a{ color:#cbd5e1; }
+.menu-sessions a:hover{ background:#1a2333; color:#fff; }
+.menu-sessions a.on{ color:#60a5fa; } .menu-sessions a.on::after{ color:#93c5fd; }
+#menu .hint{ display:none; }
+#menu-btn span{ background:#cbd5e1; }
+#menu{ background:#0b1220; }
+
+/* "wait": they're already typing when the screen opens; the click brings their message */
+.iphone .msgs > .slot.wait.step:not(.shown){ display:flex; opacity:1; transform:none; }
+.iphone .slot.wait:not(.shown) .typing.pre{ opacity:1 !important; animation:none; position:relative; transform:none; }
+.iphone .slot.wait:not(.shown) .bubble.in{ display:none; }
+.iphone .slot.wait.shown .typing.pre{ display:none !important; }
+.iphone .slot.wait.shown:not(.done) .bubble.in{ animation:popIn3 .45s cubic-bezier(.2,1.3,.4,1) 0s both !important; }
+.iphone .slot:has(+ .slot.wait.shown) .bubble::before, .iphone .slot:has(+ .slot.wait.shown) .bubble::after{ animation:none; display:none; }

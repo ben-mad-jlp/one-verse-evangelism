@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>One Verse Evangelism — Flyer</title>
+<link rel="stylesheet" href="../app/theme.css">
+<style>
+@page{ size:8.5in 11in; margin:0; }
+html,body{ margin:0; background:#0b1220; }
+body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; font-family:"Inter",-apple-system,system-ui,sans-serif; color:#fff; }
+.page{ width:8.5in; height:11in; box-sizing:border-box; padding:.55in .55in .5in; position:relative; overflow:hidden;
+  background:radial-gradient(120% 60% at 100% 0%, #13254a 0%, #0b1220 55%); }
+.top{ display:flex; justify-content:space-between; align-items:flex-end; }
+.brand .w{ font-size:58px; font-weight:800; line-height:.92; letter-spacing:-.035em; }
+.brand .w span{ display:block; } .brand .w span+span{ color:#60a5fa; }
+.brand .ref{ margin-top:14px; font-size:15px; font-weight:700; letter-spacing:.3em; color:#ffd27a; }
+.tag{ max-width:3.1in; text-align:right; font-size:15px; line-height:1.4; color:#cbd5e1; }
+.tag b{ color:#fff; }
+.verse{ margin-top:.3in; }
+.verse .notif{ box-sizing:border-box; padding:16px 20px; border-radius:26px; gap:16px; }
+.verse .notif .appicon{ width:46px; height:46px; border-radius:11px; } .verse .notif .appicon svg{ width:46px; height:46px; }
+.verse .notif .nt{ font-size:14px; } .verse .notif .nt span{ font-size:13px; }
+.verse .notif .v{ font-size:21px; line-height:1.28; font-weight:500; }
+.verse .a{ color:#ff3b30; font-weight:600; } .verse .b{ color:#1fa84a; font-weight:600; } .verse .nref{ font-size:14px; }
+.main{ display:grid; grid-template-columns:1fr 2.85in; gap:.35in; margin-top:.32in; align-items:start; }
+h2{ margin:0 0 6px; font-size:13px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#60a5fa; }
+.steps{ list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:15px; }
+.steps li{ display:grid; grid-template-columns:38px 1fr; gap:12px; align-items:start; }
+.steps .n{ width:34px; height:34px; border-radius:50%; background:#0b84fe; display:grid; place-items:center; font-weight:800; font-size:16px; }
+.steps li.sin .n{ background:#ff3b30; } .steps li.life .n{ background:#30d158; color:#05210d; }
+.steps .t{ font-size:19px; font-weight:800; letter-spacing:-.01em; }
+.steps li.sin .t{ color:#ff6b61; } .steps li.life .t{ color:#4ade80; }
+.steps p{ margin:3px 0 0; font-size:13.5px; line-height:1.42; color:#cbd5e1; }
+.steps p i{ color:#fff; font-style:normal; font-weight:600; }
+.start{ margin-top:.28in; background:#162033; border:1.5px solid #26324a; border-radius:20px; padding:16px 18px; }
+.start h3{ margin:0; font-size:15px; font-weight:800; }
+.start ol{ margin:8px 0 0; padding-left:18px; font-size:13px; line-height:1.55; color:#cbd5e1; }
+.start b{ color:#fff; }
+.phonewrap{ position:relative; }
+.phonewrap .iphone{ zoom:.62; height:auto; } .phonewrap .iphone .scr{ height:auto; } .phonewrap .iphone .msgs{ flex:none; overflow:visible; }
+.phonewrap .iphone .bubble{ font-size:17.5px; max-width:80%; }
+.phonewrap .iphone .msgs{ justify-content:flex-start; }
+.bubble[data-n]::marker{}
+.iphone .bubble[data-n]{ overflow:visible; }
+.iphone .msgs .bubble[data-n] > .badge{ position:absolute; top:-9px; width:24px; height:24px; border-radius:50%; font-size:13px; font-weight:800; display:grid; place-items:center; color:#fff; background:#0b84fe; box-shadow:0 0 0 3px #fff; }
+.iphone .bubble.me > .badge{ left:-12px; } .iphone .bubble.them > .badge{ right:-12px; }
+.badge.sin{ background:#ff3b30 !important; } .badge.life{ background:#30d158 !important; }
+.foot{ position:absolute; left:.55in; right:.55in; bottom:.42in; display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:#7c8aa5; border-top:1px solid #26324a; padding-top:12px; }
+.foot b{ color:#ffd27a; font-weight:700; letter-spacing:.06em; }
+
+/* ===== laser-printer friendly: white paper, dark ink, colors that still read in grayscale ===== */
+html,body{ background:#fff; }
+.page{ background:#fff; color:#0b1220; }
+.brand .w span{ color:#0b1220; } .brand .w span+span{ color:#0a5fc2; }
+.brand .ref{ color:#0b1220; }
+.tag{ color:#374151; } .tag b{ color:#0b1220; }
+h2{ color:#0a5fc2; }
+.verse .notif{ background:#fff; border:2px solid #0b1220; box-shadow:none; }
+.verse .notif .nt b{ color:#0b1220; } .verse .notif .nt span{ color:#4b5563; }
+.verse .a{ color:#b91c1c; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; }
+.verse .b{ color:#15803d; } .verse .nref{ color:#4b5563; }
+.steps .n{ background:#0a5fc2; color:#fff; }
+.steps li.sin .n{ background:#b91c1c; } .steps li.life .n{ background:#15803d; color:#fff; }
+.steps .t{ color:#0b1220; } .steps li.sin .t{ color:#b91c1c; } .steps li.life .t{ color:#15803d; }
+.steps p{ color:#374151; } .steps p i{ color:#0b1220; }
+.start{ background:#fff; border:2px solid #0b1220; }
+.start h3{ color:#0b1220; } .start ol{ color:#374151; } .start b{ color:#0b1220; }
+.foot{ color:#4b5563; border-top:1.5px solid #0b1220; } .foot b{ color:#0b1220; }
+/* phone: thin outline instead of a heavy black slab; bubbles readable without color */
+.phonewrap .iphone{ background:#fff; box-shadow:0 0 0 3px #0b1220; padding:6px; }
+.phonewrap .iphone::before, .phonewrap .iphone::after{ display:none; }
+.phonewrap .iphone .scr{ border:1.5px solid #9ca3af; }
+.phonewrap .iphone .bubble.me{ background:#0a5fc2; font-weight:500; }
+.phonewrap .iphone .bubble.me::before{ background:#0a5fc2; }
+.phonewrap .iphone .bubble.them{ background:#fff; border:1.5px solid #6b7280; color:#0b1220; }
+.phonewrap .iphone .bubble.them::before, .phonewrap .iphone .bubble.them::after{ display:none; }
+.phonewrap .iphone .head{ background:#fff; border-bottom:1.5px solid #d1d5db; }
+.badge{ background:#0a5fc2 !important; box-shadow:0 0 0 3px #fff, 0 0 0 4.5px #0b1220 !important; }
+.badge.sin{ background:#b91c1c !important; } .badge.life{ background:#15803d !important; }
+</style></head><body>
+<div class="page">
+  <div class="top">
+    <div class="brand"><div class="w"><span>One Verse</span><span>Evangelism</span></div><div class="ref">ROMANS 6:23</div></div>
+    <div class="tag">One verse. One conversation. <b>Short, clear, and aimed right at the need of the person in front of you.</b></div>
+  </div>
+  <div class="verse"><div class="notif"><div class="appicon"><svg viewBox="0 0 60 60"><ellipse cx="30" cy="28" rx="20.5" ry="16.5" fill="#fff"/><path d="M15.5 37.5c-.6 4.2-2.6 7.4-5.6 9.3 4.7.4 9.4-1.2 12.6-4.3z" fill="#fff"/></svg></div><div class="nb"><div class="nt"><b>One Verse</b><span>now</span></div><div class="v"><span class="a">For the wages of sin is death,</span> <span class="b">but the gift of God is eternal life in Christ Jesus our Lord.</span> <span class="nref">Romans 6:23</span></div></div></div></div>
+  <div class="main">
+    <div>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><div class="n">1</div><div><div class="t">Need</div><p>Ask, <i>“Is there anything I can be praying for you about?”</i> Then really listen. What they share is the door.</p></div></li>
+        <li><div class="n">2</div><div><div class="t">Transition</div><p>Meet them right where they are, then ask if you can share: <i>“can I share how Jesus can give you peace?”</i></p></div></li>
+        <li class="sin"><div class="n">3</div><div><div class="t">Problem</div><p><i>The wages of sin is death.</i> Sin is choosing to reject God. Wages are what you earn, and sin earns death. It’s why everything feels broken.</p></div></li>
+        <li><div class="n">4</div><div><div class="t">But…</div><p>Pause on the turn. The verse doesn’t end with death.</p></div></li>
+        <li class="life"><div class="n">5</div><div><div class="t">Solution</div><p><i>The gift of God is eternal life in Christ Jesus our Lord.</i> Jesus paid for your sin and mine, so you can be made right with God and know him.</p></div></li>
+      </ol>
+      <div class="start">
+        <h3>Keep the conversation going</h3>
+        <ol>
+          <li><b>Pray</b> for them, and tell them you are.</li>
+          <li><b>Follow up</b> in a few days: “how’s it going?”</li>
+          <li><b>Listen</b> for the moment to share the verse.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="phonewrap">
+      <div class="iphone"><div class="scr">
+        <div class="island"></div>
+        <div class="status"><span class="time">9:41</span><span class="icons"><svg class="sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg><svg class="wifi" viewBox="0 0 16 12"><path d="M8 11.6l2.3-2.6a3.3 3.3 0 0 0-4.6 0z"/><path d="M8 4.6c1.9 0 3.6.7 4.9 1.9l1.3-1.5A9.3 9.3 0 0 0 8 2.6 9.3 9.3 0 0 0 1.8 5l1.3 1.5A7.3 7.3 0 0 1 8 4.6z" opacity="1"/><path d="M8 7.6c1.1 0 2.1.4 2.9 1.1l1.3-1.5A8 8 0 0 0 8 5.9a8 8 0 0 0-4.2 1.3l1.3 1.5A4.4 4.4 0 0 1 8 7.6z"/></svg><span class="bat"><i></i></span></span></div>
+        <div class="head"><svg class="back" viewBox="0 0 12 20"><path d="M10 2L2 10l8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="avatar">AL</div><div class="name">Ava <span class="chev">›</span></div></div>
+        <div class="msgs">
+<div class="stamp">Today 4:18 PM</div>
+<div class="bubble them" data-n="1">I can’t stop feeling anxious</div>
+<div class="bubble me" data-n="2">thanks for telling me. anxiety is so heavy. can I share how Jesus can give you peace?</div>
+<div class="bubble them">sure</div>
+<div class="bubble me" data-n="3">so the Bible says the wages of sin is death. sin breaks your relationship w God, and mine. that’s why everything feels so broken</div>
+<div class="bubble them">yeah… that makes sense</div>
+<div class="bubble me" data-n="4">but…</div>
+<div class="bubble them">but what?</div>
+<div class="bubble me" data-n="5">the gift of God is eternal life in Christ Jesus our Lord. Jesus paid for your sin and mine so you can know God and actually have peace</div>
+<div class="bubble them">I’ve heard that before… but never really thought of it that way</div>
+        </div>
+        <div class="compose"><span class="plus">+</span><div class="field"><span>iMessage</span><svg class="mic" viewBox="0 0 14 20"><rect x="3.5" y="1" width="7" height="11" rx="3.5"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
+        <div class="home"></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Pray. Listen. Share <b>ONE VERSE</b>.</span><span>Romans 6:23</span></div>
+</div>
+<script>
+document.querySelectorAll('.bubble[data-n]').forEach(b=>{const n=b.dataset.n;const s=document.createElement('span');s.className='badge'+(n==='3'?' sin':n==='5'?' life':'');s.textContent=n;b.appendChild(s);});
+</script>
+</body></html>

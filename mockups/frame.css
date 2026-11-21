@@ -1,0 +1,13 @@
+/* Mockup scaffold: each .frame is a 1600x1000 screen shown at half size. */
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ background:#d9dbe0; font-family:system-ui, sans-serif; padding:32px 24px 64px; }
+header.mock{ max-width:1640px; margin:0 auto 24px; color:#222; }
+header.mock h1{ font-size:22px; font-weight:700; }
+header.mock p{ font-size:15px; color:#555; margin-top:4px; max-width:900px; }
+header.mock nav{ margin-top:10px; font-size:14px; }
+header.mock nav a{ color:#2a4cff; margin-right:14px; }
+.grid{ display:grid; grid-template-columns:repeat(2, 800px); gap:24px; justify-content:center; }
+.cell{ width:800px; height:500px; overflow:hidden; border-radius:10px; box-shadow:0 6px 24px rgba(0,0,0,.18); }
+.frame{ width:1600px; height:1000px; transform:scale(.5); transform-origin:0 0; position:relative; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px; }
+@media (max-width:1700px){ .grid{ grid-template-columns:800px; } }
